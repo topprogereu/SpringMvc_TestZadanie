@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.servlet.annotation.MultipartConfig;
 
-@MultipartConfig
+
 @Configuration
 @EnableWebMvc
 @ComponentScan   (basePackages = { "com.pasha.dev" })
@@ -36,19 +36,13 @@ public class WebMvcConfig  extends WebMvcConfigurerAdapter {
         configurer.enable();
 
     }
-
-    /*@Bean
+/*
+    @Bean
     public StandardServletMultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
     }
     */
 
-/*@Bean
-public CommonsMultipartResolver multipartResolver() {
-    CommonsMultipartResolver resolver=new CommonsMultipartResolver();
-    resolver.setDefaultEncoding("utf-8");
-    return resolver;
+}
 
-}
-*/
-}
+

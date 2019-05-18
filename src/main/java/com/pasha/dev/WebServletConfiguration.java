@@ -9,12 +9,14 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import java.io.File;
+
 
 public class WebServletConfiguration implements WebApplicationInitializer{
 
 
     private String TMP_FOLDER = "";
-    private int MAX_UPLOAD_SIZE = 5 * 1024 * 1024;
+    private int MAX_UPLOAD_SIZE = 5 * 1024*1024;
 
     public void onStartup(ServletContext ctx) throws ServletException {
 
@@ -29,6 +31,7 @@ public class WebServletConfiguration implements WebApplicationInitializer{
         servlet.setLoadOnStartup(1);
 
         servlet.addMapping("/");
+
 
         MultipartConfigElement multipartConfigElement = new MultipartConfigElement(TMP_FOLDER,
                 MAX_UPLOAD_SIZE, MAX_UPLOAD_SIZE * 2, MAX_UPLOAD_SIZE / 2);
