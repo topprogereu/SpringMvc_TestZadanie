@@ -22,19 +22,18 @@ public class WebMvcConfig  extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver()  {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/pages/");
+        resolver.setPrefix("/WEB-INF/static/");
         resolver.setSuffix(".html");
         return resolver;
     }
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/WEB-INF/pages/**").addResourceLocations("/pages/");
+        registry.addResourceHandler("/WEB-INF/static/**").addResourceLocations("/static/");
     }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
-
     }
 /*
     @Bean

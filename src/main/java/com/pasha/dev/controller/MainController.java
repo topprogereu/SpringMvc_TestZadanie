@@ -1,13 +1,16 @@
 package com.pasha.dev.controller;
 
+
+import com.pasha.dev.filestats.FileStat;
+import com.pasha.dev.service.FileWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.*;
 
+import java.io.*;
+import java.util.List;
 
 
 @Controller
@@ -15,27 +18,21 @@ public class MainController {
 
 
     @Autowired
-    private HttpServletRequest request;
+    FileWorkService fileWorkService;
 
-    @GetMapping("/")
-    public String start(){
-        System.out.println("Started");
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String start(){
+//        System.out.println("Started");
+//        return "index";
+//    }
 
     @RequestMapping(value="/upload", method= RequestMethod.GET)
-    @ResponseBody
     public String provideUploadInfo() {
         System.out.println("KEK");
         return "result";
     }
 
-    @RequestMapping(value="/hello", method= RequestMethod.GET)
-    @ResponseBody
-    public String provideSSSInfo() {
-        System.out.println("ON GET HELLO");
-        return "index";
-    }
+
 
     @PostMapping(value="/upload")
     @ResponseBody
@@ -44,12 +41,7 @@ public class MainController {
         String name = file.getOriginalFilename();
         if (!file.isEmpty()) {
             try {
-                /*
-                String filePath = request.getServletContext().getRealPath("/");
 
-                File f1 = new File(System.getProperty("upload.location")+"/"+file.getOriginalFilename());
-                file.transferTo(f1);
-                */
                 byte[] bytes = file.getBytes();
                 File localFile = new File(System.getProperty("upload_location")+"/"+file.getOriginalFilename());
                 BufferedOutputStream stream =
@@ -57,7 +49,7 @@ public class MainController {
                 stream.write(bytes);
                 stream.close();
 
-
+                fileWorkService.saveFileStat(localFile);
 
 
 
