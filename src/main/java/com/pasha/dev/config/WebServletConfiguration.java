@@ -1,4 +1,4 @@
-package com.pasha.dev;
+package com.pasha.dev.config;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
@@ -29,6 +29,7 @@ public class WebServletConfiguration implements WebApplicationInitializer{
         ServletRegistration.Dynamic servlet = ctx.addServlet("dispatcher", new DispatcherServlet(webCtx));
 
         servlet.setLoadOnStartup(1);
+
 
         servlet.addMapping("/");
 

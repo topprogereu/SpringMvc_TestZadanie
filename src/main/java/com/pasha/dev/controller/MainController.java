@@ -2,7 +2,6 @@ package com.pasha.dev.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 
@@ -45,26 +44,29 @@ public class MainController {
         String name = file.getOriginalFilename();
         if (!file.isEmpty()) {
             try {
+                /*
                 String filePath = request.getServletContext().getRealPath("/");
 
                 File f1 = new File(System.getProperty("upload.location")+"/"+file.getOriginalFilename());
                 file.transferTo(f1);
-
-                /*
+                */
                 byte[] bytes = file.getBytes();
+                File localFile = new File(System.getProperty("upload_location")+"/"+file.getOriginalFilename());
                 BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
+                        new BufferedOutputStream(new FileOutputStream(localFile));
                 stream.write(bytes);
                 stream.close();
-                */
 
 
-                return "Вы удачно загрузили " + name + " в " + name + "-uploaded !";
+
+
+
+                return "File " + name + " was download in " + System.getProperty("upload.location")+"/"+file.getOriginalFilename();
             } catch (Exception e) {
-                return "Вам не удалось загрузить " + name + " => " + e.getMessage();
+                return "Yo yo error " + name + " => " + e.getMessage();
             }
         } else {
-            return "Вам не удалось загрузить " + name + " потому что файл пустой.";
+            return "Download failed " + name + " because file was empty";
         }
     }
 

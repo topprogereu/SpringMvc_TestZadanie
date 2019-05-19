@@ -1,6 +1,6 @@
 package com.pasha.dev.filestats;
 
-public class CalculStatFile {
+public class FileStat {
 
     private String name;
     private int countLines;
@@ -8,11 +8,11 @@ public class CalculStatFile {
     private int maxLengthWordsInFile;
     private int minLengthWordsInFile;
 
-    public CalculStatFile()
+    public FileStat()
     {
     }
-    public CalculStatFile(String name, int countLines, double averageCountLines,
-                          int maxLengthWordsInFile, int minLengthWordsInFile)
+    public FileStat(String name, int countLines, double averageCountLines,
+                    int maxLengthWordsInFile, int minLengthWordsInFile)
     {
         this.name = name;
         this.countLines = countLines;
