@@ -1,4 +1,12 @@
+<html>
 <head>
+    <style>
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
@@ -7,11 +15,32 @@
     <p>Файл для загрузки: <input name="file" type="file"></p>
     <p>Имя: <input name="name" type="text"><br>
         <br>
-        Нажмите кнопку для загрузки файла на сервер<input type="submit" value="Загрузить"></p>
+<input type="submit" value="Загрузить на сервер"></p>
 </form>
 <br>
-<input id="file_name" type="text"><button id="getButton">Загрузить статистику по файлам</button>
-
-<script src="/WEB-INF/static/js/getInfoFromDb.js"></script>
+<br>
+Чтобы получить статистику, ниже введите имя файла и нажмите
+<br>
+кнопку,если поле будет пустым, вернется список всех файлов
+<br>
+<br>
+Имя: <input id="file_name" type="text">
+<br>
+<br>
+<button id="getButton">Загрузить статистику по файлам</button>
+<br>
+<br>
+<table id="stat_table" >
+    <tr>
+        <th>Имя файла</th>
+        <th>Количество строк</th>
+        <th>Среднее кол-во слов в строке</th>
+        <th>Макс длина слова</th>
+        <th>Мин длина слова</th>
+    </tr>
+</table>
+<script src="/static/js/getInfoFromDb.js"></script>
 </body>
+
+</html>
 

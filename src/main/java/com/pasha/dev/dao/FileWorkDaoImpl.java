@@ -1,15 +1,16 @@
 package com.pasha.dev.dao;
 
-import com.pasha.dev.filestats.FileStat;
+import com.pasha.dev.myfile.FileStat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Repository
-public class FileStatDaoImpl implements FileStatDao {
+public class FileWorkDaoImpl implements FileWorkDao {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -42,6 +43,7 @@ public class FileStatDaoImpl implements FileStatDao {
                     "( name_of_file varchar(50) primary key , count_lines int, avg_count_words double, max_length_words_in_file int, min_length_words_in_file int)";
             jdbcTemplate.update(sql_query);
     }
+
 
 
 

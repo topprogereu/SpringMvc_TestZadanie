@@ -1,10 +1,10 @@
 package com.pasha.dev.dao;
 
-import com.pasha.dev.filestats.FileStat;
+import com.pasha.dev.myfile.FileStat;
 
 import java.util.List;
 
-public interface FileStatDao {
+public interface FileWorkDao {
 
     void saveFileStat(FileStat file);
 

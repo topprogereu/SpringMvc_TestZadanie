@@ -1,4 +1,4 @@
-package com.pasha.dev.filestats;
+package com.pasha.dev.myfile;
 
 public class FileStat {
 

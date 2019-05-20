@@ -1,10 +1,8 @@
 package com.pasha.dev.service;
 
-import com.pasha.dev.dao.FileStatDao;
-import com.pasha.dev.dao.FileStatDaoImpl;
-import com.pasha.dev.filestats.FileStat;
+import com.pasha.dev.dao.FileWorkDao;
+import com.pasha.dev.myfile.FileStat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -14,31 +12,34 @@ import java.util.List;
 public class FileWorkService {
 
     @Autowired
-    FileStatDao fileStatDao;
+    FileWorkDao fileWorkDao;
 
-    public void saveFileStat(File file) {
-        fileStatDao.saveFileStat(calculateDataInFile(file));
+    public void saveFileStat(FileStat file) {
+
+       // fileWorkDao.saveFileStat(calculateDataInFile(file));
+        //FileStat f1 = calculateDataInFile(file);
+        fileWorkDao.saveFileStat(file);
     }
 
-
+    /*
     private FileStat calculateDataInFile(File file)
     {
-        FileStat fileStat = new FileStat();
+        FileStat fileStat = new FileStat("name3",1,1,1,1);
 
 
 
-        return new FileStat("name",1,1,1,1);
+        return fileStat;
     }
-
+  */
     public List<FileStat> getInfoAboutFile(String name)
     {
         if(name == null || name.isEmpty())
         {
-            return fileStatDao.getAllFiles();
+            return fileWorkDao.getAllFiles();
         }
         else
         {
-            return fileStatDao.getInfoAboutFile(name);
+            return fileWorkDao.getInfoAboutFile(name);
         }
 
     }

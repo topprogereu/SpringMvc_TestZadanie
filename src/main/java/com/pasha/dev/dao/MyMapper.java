@@ -1,6 +1,6 @@
 package com.pasha.dev.dao;
 
-import com.pasha.dev.filestats.FileStat;
+import com.pasha.dev.myfile.FileStat;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
