@@ -15,22 +15,9 @@ public class FileWorkService {
     FileWorkDao fileWorkDao;
 
     public void saveFileStat(FileStat file) {
-
-       // fileWorkDao.saveFileStat(calculateDataInFile(file));
-        //FileStat f1 = calculateDataInFile(file);
         fileWorkDao.saveFileStat(file);
     }
 
-    /*
-    private FileStat calculateDataInFile(File file)
-    {
-        FileStat fileStat = new FileStat("name3",1,1,1,1);
-
-
-
-        return fileStat;
-    }
-  */
     public List<FileStat> getInfoAboutFile(String name)
     {
         if(name == null || name.isEmpty())

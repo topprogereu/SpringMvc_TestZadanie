@@ -10,6 +10,5 @@ public interface FileWorkDao {
 
     List<FileStat> getInfoAboutFile(String name);
 
-
     List<FileStat> getAllFiles();
 }

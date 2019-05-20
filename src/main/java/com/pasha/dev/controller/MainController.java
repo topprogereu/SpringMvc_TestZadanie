@@ -2,6 +2,7 @@ package com.pasha.dev.controller;
 
 
 import com.pasha.dev.myfile.FileStat;
+import com.pasha.dev.service.FileCalculeService;
 import com.pasha.dev.service.FileWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,11 +47,7 @@ public class MainController {
                 stream.close();
 
                 FileStat d1 = new FileStat();
-                d1.setName(name);
-                d1.setAverageCountLines(1);
-                d1.setCountLines(1);
-                d1.setMaxLengthWordsInFile(1);
-                d1.setMinLengthWordsInFile(1);
+                d1 = FileCalculeService.calculeDataAboutFile(localFile);
                 fileWorkService.saveFileStat(d1);
 
 

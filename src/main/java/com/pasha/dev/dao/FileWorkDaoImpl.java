@@ -15,7 +15,6 @@ public class FileWorkDaoImpl implements FileWorkDao {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-
     @Override
     public void saveFileStat(FileStat fileStat) {
         String sql_query = "INSERT INTO UPLOADED_FILE_STAT( name_of_file, count_lines, " +
