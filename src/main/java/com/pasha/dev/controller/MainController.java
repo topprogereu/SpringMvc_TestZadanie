@@ -20,12 +20,6 @@ public class MainController {
     @Autowired
     FileWorkService fileWorkService;
 
-//    @GetMapping("/")
-//    public String start(){
-//        System.out.println("Started");
-//        return "index";
-//    }
-
     @RequestMapping(value="/upload", method= RequestMethod.GET)
     public String provideUploadInfo() {
         System.out.println("KEK");
@@ -50,13 +44,12 @@ public class MainController {
                 d1 = FileCalculeService.calculeDataAboutFile(localFile);
                 fileWorkService.saveFileStat(d1);
 
-
-                return "Файл " + name + " был загружен в " + System.getProperty("upload_location")+"/"+file.getOriginalFilename();
+                return "File " + name + " was downoload in " + System.getProperty("upload_location")+"/"+file.getOriginalFilename();
             } catch (Exception e) {
-                return "Ой, что-то пошло не так " + name + " => " + e.getMessage();
+                return "Oops, error " + name + " => " + e.getMessage();
             }
         } else {
-            return "Загрузка не удалась так как " + name + " файл пустой";
+            return "Download failed cause " + name + " is empty";
         }
     }
 

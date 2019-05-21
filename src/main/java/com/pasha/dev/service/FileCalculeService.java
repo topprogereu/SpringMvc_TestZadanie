@@ -2,10 +2,7 @@ package com.pasha.dev.service;
 
 import com.pasha.dev.myfile.FileStat;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -21,18 +18,23 @@ public class FileCalculeService {
 
             List<String> linesList = linesStream.collect(Collectors.toList());
             int countLine = linesList.size();
-
             double sumWordsInFile = 0;
             for (String str: linesList) {
                 sumWordsInFile += str.split(" +").length;
             }
             double avgWordInLines = sumWordsInFile/countLine;
 
-            List<String> wordList = Arrays.asList(linesList.stream().collect(Collectors.joining(" ")).split(" +"));
-            System.out.println(wordList);
+            List<String> wordAllList = new ArrayList<>();
+            for(String line: linesList)
+            {
+                String [] arrayWordInLine = line.split(" +");
+                for(String s : arrayWordInLine)
+                    wordAllList.add(s);
+            }
 
-            int maxLengthW = wordList.stream().max(Comparator.comparingInt(String::length)).get().length();
-            int minLengthW = wordList.stream().min(Comparator.comparingInt(String::length)).get().length();
+            wordAllList.sort((s1, s2) -> s1.length() - s2.length());
+            int minLengthW= (wordAllList.get(0)).length();
+            int maxLengthW= (wordAllList.get(wordAllList.size()-1)).length();
 
             fs = new FileStat(file.getName(),countLine,avgWordInLines,maxLengthW,minLengthW);
 
